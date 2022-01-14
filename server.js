@@ -16,6 +16,7 @@ client.on('message', (channel, tags, message, self) => {
 	const isNotBot = tags.username.toLocaleLowerCase() !== process.env.TWITCH_USERNAME;
 
 	if (isNotBot) {
-		
+		client.say(channel, message)
 	}
+	
 });
