@@ -1,12 +1,21 @@
 const tmi = require('tmi.js');
+require('dotenv').config();
 
 const client = new tmi.Client({
-	channels: [ 'my_name' ]
+	options: { debug: true },
+	identity: {
+		username: process.env.TWITCH_USERNAME,
+		password: process.env.TWITCH_OAUTH,
+	},
+	channels: [ 'NickNocc' ]
 });
 
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
-	// "Alca: Hello, World!"
-	console.log(`${tags['display-name']}: ${message}`);
+	const isNotBot = tags.username.toLocaleLowerCase() !== process.env.TWITCH_USERNAME;
+
+	if (isNotBot) {
+		
+	}
 });
